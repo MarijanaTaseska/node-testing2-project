@@ -1,21 +1,28 @@
 const db = require('../data/db-config')
 
-function getAll(){
+function getAll() {
     return db('users')
 }
 
-function getById(user_id){
-    return db('users').where('user_id', user_id).first()
+async function getById(id) {
+    const user = await db('users').where('user_id', id).first()
+    return user
 }
 
-async function createUser(user){
-const [id] = await db('users').insert(user)
-return db('users').where('user_id', id).first()
+async function createUser(user) {
+    const [id] = await db('users').insert(user)
+    return db('users').where('user_id', id).first()
 }
 
+async function deleteUser(id) {
+    const user = await db('users').where('user_id', id).first()
+    await db('users').where('user_id', id).del()
+    return user
+}
 
-module.exports={
+module.exports = {
     getAll,
     getById,
     createUser,
+    deleteUser,
 }

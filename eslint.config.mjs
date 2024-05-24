@@ -6,7 +6,7 @@ const jestGlobals = globals.jest
 
 
 export default [
-  {files: ["**/*.js"], languageOptions: {sourceType: "commonjs"}},
-  {languageOptions: { globals: {...nodeGlobals, ...jestGlobals}}},
+  { files: ["**/*.js"], languageOptions: { sourceType: "commonjs" } },
+  { languageOptions: { globals: { ...nodeGlobals, ...jestGlobals } } },
   pluginJs.configs.recommended,
 ];
