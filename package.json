@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watchAll",
+    "test": "cross-env DB_ENV=testing jest --watchAll --verbose --runInBand",
     "start": "node index.js",
     "server": "nodemon index.js",
     "rollback": "npx knex migrate:rollback",
     "migrate": "npx knex migrate:latest",
     "seed": "npx knex seed:run",
-    "cleanup":"knex seed:run --specific=01-cleanup.js",
+    "cleanup": "knex seed:run --specific=01-cleanup.js",
     "reset": " npm run rollback && npm run migrate && npm run seed"
   },
   "jest": {

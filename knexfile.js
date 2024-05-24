@@ -18,7 +18,7 @@ module.exports = {
     testing: {
       ...sharedConfig,
       connection: {
-        filename: './test.sqlite3'
+        filename: './data/test.db3'
       },
        // needed for sqlite
     }
