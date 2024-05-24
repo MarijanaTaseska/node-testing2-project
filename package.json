@@ -8,7 +8,8 @@
     "server": "nodemon index.js",
     "rollback": "npx knex migrate:rollback",
     "migrate": "npx knex migrate:latest",
-    "seed": "npx knex seed:run"
+    "seed": "npx knex seed:run",
+    "reset":" npm run rollback && npm run migrate && npm run seed"
   },
   "jest": {
     "verbose": true
