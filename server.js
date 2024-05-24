@@ -1,9 +1,9 @@
 const express = require('express')
 const server = express()
-const dataRouter = require('./api/data-Router')
+const usersRouter = require('./api/users-Router')
 
 server.use(express.json())
-server.use('/data', dataRouter)
+server.use('/users', usersRouter)
 
 module.exports= server
 

@@ -1,8 +1,14 @@
 const router = require('express').Router()
-
+const Users = require('./users-model')
 
 router.get('/', (req, res) => {
-    res.json('data router is UPUPUP')
+    Users.getAll()
+    .then(users => {
+      res.json(users);
+    })
+    .catch(err => {
+      res.status(500).json({ message: 'Failed to get users' });
+    })
 })
 
 router.use((err, req, res, next) => {
