@@ -1,34 +1,28 @@
 // Update with your config settings.
 
+const sharedConfig = {
+  client: 'sqlite3',
+  migrations: { directory:'./data/migrations'},
+  seeds: { directory: './data/seeds'},
+  useNullAsDefault: true,
+  pool: {afterCreate: (conn, done) => conn.run('PRAGMA foreign_keys = ON', done) },
+}
+
 module.exports = {
 
   development: {
-    client: 'sqlite3',
-    connection: {
-      filename: './dev.sqlite3'
-    }
+    ...sharedConfig,
+    connection: { filename: './data/users_table.db3' },
+    
   },
-
-  staging: {
-    development: {
-      client: 'sqlite3',
-      connection: {
-        filename: './dev.sqlite3'
-      },
-      useNullAsDefault: true, // needed for sqlite
-    },
     testing: {
-      client: 'sqlite3',
+      ...sharedConfig,
       connection: {
         filename: './test.sqlite3'
       },
-      useNullAsDefault: true, // needed for sqlite
-    },
-    migrations: {
-      tableName: 'knex_migrations'
+       // needed for sqlite
     }
-  },
+  }
 
-  production: {
-    },
-};
+ 
+
